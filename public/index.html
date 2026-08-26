@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local flashcard quiz application">
+  <title>Flashcard Quiz</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="site-header">
+      <button class="brand" id="home-button" type="button" aria-label="Return to quiz selection">
+        <span class="brand-mark" aria-hidden="true">F</span>
+        <span>Flashcards</span>
+      </button>
+      <span class="local-badge">Local session</span>
+    </header>
+
+    <section id="selection-screen" class="screen" aria-labelledby="selection-heading">
+      <div class="intro">
+        <p class="eyebrow">Test your recall</p>
+        <h1 id="selection-heading">Choose a quiz</h1>
+        <p>Twenty cards, picked at random. Reveal each answer and grade yourself honestly.</p>
+      </div>
+      <div id="quiz-list" class="quiz-grid" aria-live="polite">
+        <div class="status-card">Loading quizzes…</div>
+      </div>
+    </section>
+
+    <section id="quiz-screen" class="screen" hidden aria-labelledby="quiz-name">
+      <div class="quiz-topline">
+        <div>
+          <p class="eyebrow">Current quiz</p>
+          <h1 id="quiz-name"></h1>
+        </div>
+        <button id="exit-button" class="text-button" type="button">Exit quiz</button>
+      </div>
+
+      <div class="progress-row">
+        <span id="progress-label">Card 1 of 20</span>
+        <span id="score-label">0 correct</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+
+      <article class="flashcard">
+        <div class="card-section question-section">
+          <p class="card-label">Question</p>
+          <p id="question" class="card-copy"></p>
+        </div>
+        <div id="answer-section" class="card-section answer-section" hidden>
+          <p class="card-label">Answer</p>
+          <p id="answer" class="card-copy answer-copy"></p>
+        </div>
+      </article>
+
+      <div id="reveal-actions" class="actions">
+        <button id="show-answer-button" class="button primary-button" type="button">Show answer</button>
+        <p class="shortcut-hint">Press <kbd>Space</kbd> to reveal</p>
+      </div>
+      <div id="grade-actions" class="actions grade-actions" hidden>
+        <p>How did you do?</p>
+        <div class="button-pair">
+          <button id="wrong-button" class="button wrong-button" type="button"><span aria-hidden="true">×</span> Got it wrong</button>
+          <button id="right-button" class="button right-button" type="button"><span aria-hidden="true">✓</span> Got it right</button>
+        </div>
+        <p class="shortcut-hint"><kbd>1</kbd> Wrong &nbsp; <kbd>2</kbd> Right</p>
+      </div>
+    </section>
+
+    <section id="results-screen" class="screen result-screen" hidden aria-labelledby="results-heading">
+      <p class="eyebrow">Quiz complete</p>
+      <h1 id="results-heading">Your score</h1>
+      <div class="score-ring" aria-label="Final score">
+        <strong id="score-percent">0%</strong>
+        <span id="score-fraction">0 / 20</span>
+      </div>
+      <h2 id="result-message"></h2>
+      <p id="result-summary" class="result-summary"></p>
+      <div class="button-pair result-actions">
+        <button id="choose-quiz-button" class="button secondary-button" type="button">Choose another quiz</button>
+        <button id="retry-button" class="button primary-button" type="button">Try again</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
