@@ -1,0 +1,22 @@
+[Unit]
+Description=Flashcard Quiz web application
+After=network.target
+
+[Service]
+Type=simple
+User=adrian
+Group=adrian
+WorkingDirectory=/home/adrian/projects/flashcards
+Environment=NODE_ENV=production
+Environment=PORT=3000
+ExecStart=/home/adrian/.nvm/versions/node/v22.22.1/bin/node server.js
+Restart=on-failure
+RestartSec=5
+
+# Basic hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
