@@ -94,6 +94,6 @@ app.get('/api/quizzes/:id', async (request, response) => {
 
 app.use(express.static(publicDirectory));
 
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Flashcards is running at http://0.0.0.0:${port}`);
+app.listen(port, '127.0.0.1', () => {
+  console.log(`Flashcards is running at http://127.0.0.1:${port}`);
 });
